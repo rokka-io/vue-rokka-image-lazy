@@ -78,6 +78,9 @@ export default {
       window._imageCache = new ImageCache({ max: 200 });
     }
   },
+  updated() {
+    window._lozadObserver.observe()
+  },
   computed: {
     srcAdditionalComputed() {
       if (!this.loading || this.isCached) {
