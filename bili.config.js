@@ -1,5 +1,3 @@
-import { Config } from 'bili'
-
 const config = {
   banner: true,
   plugins: {
@@ -13,7 +11,7 @@ const config = {
     dir: 'dist',
     extractCSS: false,
     format: ['esm', 'iife-min', 'cjs', 'cjs-min', 'umd-min'],
-    moduleName: 'vueNestable',
+    moduleName: 'RokkaImageLazy',
   }
 }
 

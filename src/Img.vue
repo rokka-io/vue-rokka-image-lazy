@@ -1,5 +1,5 @@
 <template>
-  <rokka-image
+  <rokka-image-img
     :org="org"
     :hash="hash"
     :filename="filename"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {RokkaImageImg, buildRokkaUrl} from 'vue-rokka-image';
+import { RokkaImageImg, buildRokkaUrl } from 'vue-rokka-image';
 import lozad from 'lozad';
 
 class ImageCache {
@@ -46,7 +46,7 @@ class ImageCache {
 }
 
 export default {
-  name: 'RokkaImageLazy',
+  name: 'RokkaImageImgLazy',
   components: {
     RokkaImageImg
   },

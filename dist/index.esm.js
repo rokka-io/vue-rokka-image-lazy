@@ -71,7 +71,7 @@ function () {
 }();
 
 var script = {
-  name: 'RokkaImageLazy',
+  name: 'RokkaImageImgLazy',
   components: {
     RokkaImageImg: RokkaImageImg
   },
@@ -164,7 +164,7 @@ var __vue_render__ = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('rokka-image', {
+  return _c('rokka-image-img', {
     key: _vm.hash,
     attrs: {
       "org": _vm.org,
@@ -189,7 +189,7 @@ var __vue_staticRenderFns__ = [];
 var __vue_inject_styles__ = undefined;
 /* scoped */
 
-var __vue_scope_id__ = "data-v-d1a94f48";
+var __vue_scope_id__ = "data-v-38051279";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;
