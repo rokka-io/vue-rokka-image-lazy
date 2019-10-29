@@ -105,17 +105,10 @@ var script = {
       "default": null
     }
   }),
-  created: function created() {
-    if (!window._imageCache) {
-      window._imageCache = new ImageCache({
-        max: 200
-      });
-    }
-  },
   computed: {
     srcAdditionalComputed: function srcAdditionalComputed() {
       if (!this.loading || this.isCached) {
-        return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+        return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
       }
 
       window._imageCache.add(this.rokkaRenderUrl);
@@ -136,6 +129,16 @@ var script = {
         variables: Array.isArray(this.variables) ? this.variables[0] : this.variables
       });
     }
+  },
+  created: function created() {
+    if (!window._imageCache) {
+      window._imageCache = new ImageCache({
+        max: 200
+      });
+    }
+  },
+  updated: function updated() {
+    window._lozadObserver.observe();
   },
   mounted: function mounted() {
     // We initialize Lozad.js on the root
@@ -165,7 +168,6 @@ var __vue_render__ = function __vue_render__() {
   var _c = _vm._self._c || _h;
 
   return _c('rokka-image-img', {
-    key: _vm.hash,
     attrs: {
       "org": _vm.org,
       "hash": _vm.hash,
@@ -189,7 +191,7 @@ var __vue_staticRenderFns__ = [];
 var __vue_inject_styles__ = undefined;
 /* scoped */
 
-var __vue_scope_id__ = "data-v-38051279";
+var __vue_scope_id__ = "data-v-3db082c0";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;
@@ -208,10 +210,8 @@ var RokkaImageImgLazy = __vue_normalize__({
 }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);
 
 var index = {
-  install: function install(Vue, options) {
-    // Let's register our component globally
-    // https://vuejs.org/v2/guide/components-registration.html
-    Vue.component("rokka-image-img-lazy", RokkaImageImgLazy);
+  install: function install(Vue) {
+    Vue.component('rokka-image-img-lazy', RokkaImageImgLazy);
   }
 };
 
