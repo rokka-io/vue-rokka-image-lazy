@@ -1,6 +1,6 @@
 {
   "name": "vue-rokka-image-lazy",
-  "version": "0.0.1",
+  "version": "0.0.1-dev",
   "description": "to come",
   "scripts": {
     "build": "rm -rf ./dist && bili",
@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "lozad": "^1.14.0",
-    "vue-rokka-image": "github:rokka-io/vue-rokka-image#package"
+    "vue-rokka-image": "0.0.8"
   }
 }

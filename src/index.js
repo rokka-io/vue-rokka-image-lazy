@@ -1,9 +1,9 @@
-import RokkaImageImgLazy from './Img.vue'
+import RokkaImgLazy from './Img.vue'
 
-export { RokkaImageImgLazy }
+export { RokkaImgLazy }
 
 export default {
   install(Vue) {
-    Vue.component('rokka-image-img-lazy', RokkaImageImgLazy)
+    Vue.component('rokka-img-lazy', RokkaImgLazy)
   },
 }
