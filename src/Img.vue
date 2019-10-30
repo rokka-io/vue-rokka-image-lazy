@@ -6,7 +6,6 @@
     :stack="stack"
     :format="format"
     :alt="alt"
-    :key="hash"
     srcset-attribute="data-srcset"
     src-attribute="data-src"
     src-additional-attribute="src"
@@ -17,38 +16,38 @@
 </template>
 
 <script>
-import { RokkaImageImg, buildRokkaUrl } from 'vue-rokka-image';
-import lozad from 'lozad';
+import { RokkaImageImg, buildRokkaUrl } from 'vue-rokka-image'
+import lozad from 'lozad'
 
 class ImageCache {
   constructor({ max }) {
     this.options = {
       max: max || 100,
-    };
-    this._caches = [];
+    }
+    this._caches = []
   }
 
   has(key) {
-    return this._caches.indexOf(key) > -1;
+    return this._caches.indexOf(key) > -1
   }
 
   add(key) {
-    if (this.has(key)) return;
-    this._caches.push(key);
+    if (this.has(key)) return
+    this._caches.push(key)
     if (this._caches.length > this.options.max) {
-      this.free();
+      this.free()
     }
   }
 
   free() {
-    this._caches.shift();
+    this._caches.shift()
   }
 }
 
 export default {
   name: 'RokkaImageImgLazy',
   components: {
-    RokkaImageImg
+    RokkaImageImg,
   },
   props: {
     ...RokkaImageImg.props,
@@ -73,21 +72,13 @@ export default {
       default: null,
     },
   },
-  created() {
-    if (!window._imageCache) {
-      window._imageCache = new ImageCache({ max: 200 });
-    }
-  },
-  updated() {
-    window._lozadObserver.observe()
-  },
   computed: {
     srcAdditionalComputed() {
       if (!this.loading || this.isCached) {
-        return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+        return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
       }
-      window._imageCache.add(this.rokkaRenderUrl);
-      return this.loading;
+      window._imageCache.add(this.rokkaRenderUrl)
+      return this.loading
     },
 
     isCached() {
@@ -102,10 +93,19 @@ export default {
         format: this.format,
         filename: this.filename,
         options: Array.isArray(this.options) ? this.options[0] : this.options,
-        variables: Array.isArray(this.variables) ?this.variables[0]: this.variables,
-      });
-
+        variables: Array.isArray(this.variables)
+          ? this.variables[0]
+          : this.variables,
+      })
+    },
+  },
+  created() {
+    if (!window._imageCache) {
+      window._imageCache = new ImageCache({ max: 200 })
     }
+  },
+  updated() {
+    window._lozadObserver.observe()
   },
   mounted() {
     // We initialize Lozad.js on the root
@@ -113,11 +113,11 @@ export default {
     if (!window._lozadObserver) {
       window._lozadObserver = lozad('.rokka--attr-data-src', {
         rootMargin: '200px',
-      });
+      })
     }
-    window._lozadObserver.observe();
+    window._lozadObserver.observe()
   },
-};
+}
 </script>
 
 <style scoped></style>
