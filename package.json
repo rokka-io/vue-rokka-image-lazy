@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "lozad": "^1.14.0",
-    "vue-rokka-image": "0.0.8"
+    "vue-rokka-image": "0.0.10"
   }
 }

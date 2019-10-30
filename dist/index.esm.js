@@ -1,9 +1,9 @@
 /*!
- * vue-rokka-image-lazy v0.0.1
+ * vue-rokka-image-lazy v0.0.1-dev
  * (c) 
  * Released under the ISC License.
  */
-import { RokkaImageImg, buildRokkaUrl } from 'vue-rokka-image';
+import { RokkaImg, rokkaUrl } from 'vue-rokka-image';
 import lozad from 'lozad';
 import styleInject from '../node_modules/style-inject/dist/style-inject.es.js';
 import __vue_normalize__ from '../node_modules/rollup-plugin-vue/runtime/normalize.js';
@@ -71,11 +71,11 @@ function () {
 }();
 
 var script = {
-  name: 'RokkaImageImgLazy',
+  name: 'RokkaImgLazy',
   components: {
-    RokkaImageImg: RokkaImageImg
+    RokkaImg: RokkaImg
   },
-  props: Object.assign({}, RokkaImageImg.props, {
+  props: Object.assign({}, RokkaImg.props, {
     srcAttribute: {
       type: String,
       "default": 'data-src'
@@ -93,11 +93,15 @@ var script = {
     options: {
       type: [Object, Array],
       "default": function _default() {
-        return [{
-          dpr: '1'
-        }, {
+        return [{}, {
           dpr: '2'
         }];
+      }
+    },
+    operations: {
+      type: [Object, Array],
+      "default": function _default() {
+        return [];
       }
     },
     loading: {
@@ -119,7 +123,7 @@ var script = {
       return window._imageCache.has(this.rokkaRenderUrl);
     },
     rokkaRenderUrl: function rokkaRenderUrl() {
-      return buildRokkaUrl({
+      return rokkaUrl({
         org: this.org,
         hash: this.hash,
         stack: this.stack,
@@ -167,7 +171,7 @@ var __vue_render__ = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('rokka-image-img', {
+  return _c('rokka-img', {
     attrs: {
       "org": _vm.org,
       "hash": _vm.hash,
@@ -191,7 +195,7 @@ var __vue_staticRenderFns__ = [];
 var __vue_inject_styles__ = undefined;
 /* scoped */
 
-var __vue_scope_id__ = "data-v-3db082c0";
+var __vue_scope_id__ = "data-v-744333b7";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;
@@ -204,16 +208,16 @@ var __vue_is_functional_template__ = false;
 
 /* style inject shadow dom */
 
-var RokkaImageImgLazy = __vue_normalize__({
+var RokkaImgLazy = __vue_normalize__({
   render: __vue_render__,
   staticRenderFns: __vue_staticRenderFns__
 }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);
 
-var index = {
-  install: function install(Vue) {
-    Vue.component('rokka-image-img-lazy', RokkaImageImgLazy);
+module.exports = {
+  RokkaImgLazy: RokkaImgLazy,
+  "default": {
+    install: function install(Vue) {
+      Vue.component('rokka-img-lazy', RokkaImgLazy);
+    }
   }
 };
-
-export default index;
-export { RokkaImageImgLazy };
