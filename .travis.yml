@@ -1,21 +1,21 @@
 language: node_js
 node_js:
-  - '10'
+- '10'
 install:
-  - npm ci
+- npm ci
 script:
-  - npm run lint
-  - npm run build
+- npm run lint
+- npm run build
 deploy:
   provider: npm
   email: me@chregu.tv
   skip_cleanup: true
   api_key:
-    secure: "uRv5x0GB5oKy/3VeF2/mv2vb1QD5IWzaH78Er1RRQwa1P9n8OttFsNrhG9ZKF8o6ukjaEnGbzuAP63KfyW+kpFKBNblLk8aI86ZWxK43wa1un2gKobbceyyEzAibsiVNSWdEkN0xfbR6XXK/hmigbUiCw9nPiAuZpwv6D5PjL/du4GMtJSuRcgBL2sE0gSDMPVfGwn04OpApgteWSolFWbnngl5GtJQINVWiJWSzm1++iFSnrS7XYDAwY1U3vkrF+zMisR9USu2ZZ9A9eoJJI6pQVvM7j3o8TyrNSTm9x8UUd92192ide0vjbFi1V4WEAbKWpeNEq8yZXfd9yLt3I2rknvLqw4yPXI7Na1XJgUOKw+f/02zkqjsD7LKvFj3z5tBTtrL9Y2yE3Te3TeTguZ/IYg6KDZ3aqHZuTHNH4CSE4BEat2diveBNMLn1q3NbHAZhuktT6g4IcZMt43iCzl1kLmd3iTA15CNNHmxslcwV1JLgVUzvu14Y4kne/dWS2ticyj/Dg/7p0Mjjk95L4dxECqJgqkX//Wq2/CzHkcLFRosh4vASoCa2soM2KPDEK46XQBLyTHLNL4F1TMArlYB07pgIQcDOX7muLgbDXronWQTtDMb/iPkYDkm1mdGjpaYUVcCZ7mqkKJNO/tlIrGE/Nfwbw9l+61S51Yszzao="
+    secure: UIhZsu4BqbAFegcfjzSO/drkHzBzyjbWJOkuw6rOxIOE3P/ZfiTUiXo7BonVVa7uRvfp+jhSf5gTONK1yh+dtCSiRYbOBQaMpuwc83qPUlF1ZfKkTwGLEvxXowXUw5l9Pq2e8k5rxghLhDnTbjUhQTY+os+hUXz8pIwN04Mnk1Z0wgn0wn92+SUjo74hH1+tXPGsj47UliV0qWMtmAG6+QTFoRnab9jOF+pNPqLiZ6prLFoss3AiIJIaFAAbIU+hZyvCRAOTuzw27QatDKU5JYSXFCNJNdgA+XEEcBXY7MN+n6zU0fomraLAlKwNZVZ1lF5wKmWFj/YmK4qUbjwilJoop5YjO6DbfmeLukirps1WFCL1ZygCqBBEpkaiIoJbVdP7XrNz+E3PzWC67j+A1m1YWSVeoAXviQH1N+U3SDvIMGUr+VA41DIXVxbfrFLd7R7r+5WGI+gkoaxTJ8BJDPI3esrSKoUfszNFGg350bC4qv3u2KvuDY6/RdgUd9v6hQUOVHKeDtWj0jjwN2g15ukjd75tGahtnNBvEP+QvcmAoJnT/ZhcSJKZQhVg0vH8fiBAOOfFXDelqSaa9SOAgJQp+8xel4bvg9QriZn9TaXXVqS8xVnBJ1RyWWknKWnrfrclDWYGDUPPLz/jM5SVZiAqoYHKWQMcN2fhp1ubPHk=
   on:
     all_branches: true
     tags: true
 branches:
   only:
   - master
-  - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+  - "/^v[0-9]+\\.[0-9]+\\.[0-9]+$/"
