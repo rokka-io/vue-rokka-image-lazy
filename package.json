@@ -9,7 +9,8 @@
     "fix": "eslint src/* --fix"
   },
   "files": [
-    "/dist/*"
+    "/dist/*",
+    "/src/*"
   ],
   "engines": {
     "node": "^10"
