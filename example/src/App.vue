@@ -7,6 +7,7 @@
         :hash="image.short_hash"
         :org="image.organization"
         stack="dynamic"
+        loading="loader.svg"
         :operations="[
           {
             name: 'resize',
@@ -32,6 +33,7 @@
         :options="[{ af: 1 }, { af: 1, dpr: 2 }]"
       >
         <!-- make them grayscale when device width < 1000px -->
+
         <rokka-source-lazy
           media="(max-width: 1000px)"
           :operations="[
@@ -43,7 +45,7 @@
           ]"
         />
         <rokka-source-lazy media="all"></rokka-source-lazy>
-        <rokka-img-lazy></rokka-img-lazy>
+        <rokka-img-lazy loading="loader.svg"></rokka-img-lazy>
       </rokka-picture>
     </div>
   </div>
@@ -65,7 +67,7 @@ export default {
   components: {
     RokkaImgLazy,
     RokkaSourceLazy,
-    RokkaPicture
+    RokkaPicture,
   },
   data() {
     return { images: [], mode: 'picture' }
