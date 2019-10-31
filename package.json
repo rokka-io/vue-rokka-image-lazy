@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "lozad": "^1.14.0",
-    "vue-rokka-image": "0.0.12",
+    "vue-rokka-image": "github:rokka-io/vue-rokka-image#add-operations",
     "vue-runtime-helpers": "^1.1.2"
   }
 }
