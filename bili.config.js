@@ -10,7 +10,7 @@ const config = {
   output: {
     dir: 'dist',
     extractCSS: false,
-    format: ['esm', 'iife-min', 'cjs', 'cjs-min', 'umd', 'umd-min'],
+    format: ['iife-min', 'umd', 'umd-min'],
     moduleName: 'RokkaImageLazy',
   }
 }

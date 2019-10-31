@@ -1,7 +1,7 @@
 {
   "name": "vue-rokka-image-lazy",
   "version": "0.0.1-dev",
-  "description": "to come",
+  "description": "Vue 2.x component for lazy loading images from rokka.io",
   "scripts": {
     "build": "rm -rf ./dist && bili",
     "watch": "bili -w",
@@ -12,8 +12,8 @@
   "main": "dist/index.umd.min.js",
   "unpkg": "dist/index.iife.min.js",
   "jsdelivr": "dist/index.iife.min.js",
-  "author": "",
-  "license": "ISC",
+  "author": "rokka.io",
+  "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "bili": "^4.8.1",
