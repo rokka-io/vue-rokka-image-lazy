@@ -15,7 +15,7 @@
   "engines": {
     "node": "^10"
   },
-  "module": "dist/index.esm.js",
+  "module": "src/index.js",
   "main": "dist/index.esm.min.js",
   "author": "rokka.io",
   "license": "MIT",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "lozad": "^1.14.0",
-    "vue-rokka-image": "github:rokka-io/vue-rokka-image#add-operations",
+    "vue-rokka-image": "0.0.14",
     "vue-runtime-helpers": "^1.1.2"
   }
 }
