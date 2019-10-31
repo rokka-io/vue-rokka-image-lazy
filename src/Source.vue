@@ -1,11 +1,10 @@
 <template>
-  <rokka-img
+  <rokka-source
     :org="org"
     :hash="hash"
     :filename="filename"
     :stack="stack"
     :format="format"
-    :alt="alt"
     srcset-attribute="data-srcset"
     src-attribute="data-src"
     src-additional-attribute="src"
@@ -14,13 +13,13 @@
     :options="options"
     :operations="operations"
     :variables="variables"
+    :media="media"
   />
 </template>
 
 <script>
-import { RokkaImg, rokkaUrl as buildRokkaUrl } from 'vue-rokka-image'
+import { RokkaSource, rokkaUrl as buildRokkaUrl } from 'vue-rokka-image'
 import lozad from 'lozad'
-
 class ImageCache {
   constructor({ max }) {
     this.options = {
@@ -47,12 +46,12 @@ class ImageCache {
 }
 
 export default {
-  name: 'RokkaImgLazy',
+  name: 'RokkaSourceLazy',
   components: {
-    RokkaImg,
+    RokkaSource,
   },
   props: {
-    ...RokkaImg.props,
+    ...RokkaSource.props,
     srcAttribute: {
       type: String,
       default: 'data-src',
