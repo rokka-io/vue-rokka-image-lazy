@@ -1,6 +1,6 @@
 {
   "name": "vue-rokka-image-lazy",
-  "version": "0.0.1-dev",
+  "version": "0.0.1",
   "description": "Vue 2.x component for lazy loading images from rokka.io",
   "scripts": {
     "build": "rm -rf ./dist && bili",
