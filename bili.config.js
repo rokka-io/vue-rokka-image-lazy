@@ -12,7 +12,8 @@ const config = {
     extractCSS: false,
     format: ['iife-min', 'umd', 'umd-min'],
     moduleName: 'RokkaImageLazy',
-  }
+  },
+  externals: ['lozad', 'vue-rokka-image']
 }
 
 export default config
