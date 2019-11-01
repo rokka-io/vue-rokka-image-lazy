@@ -16,7 +16,8 @@
   "engines": {
     "node": "^10"
   },
-  "module": "src/index.js",
+  "module": "dist/index.esm.js",
+  "esnext": "src/index.js",
   "main": "dist/index.umd.min.js",
   "unpkg": "dist/index.umd.min.js",
   "jsdelivr": "dist/index.umd.min.js",

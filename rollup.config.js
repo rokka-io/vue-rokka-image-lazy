@@ -16,7 +16,11 @@ const defaultOutput = {
 
 export default {
   input: 'src/index.js',
-  output: [defaultOutput, { ...defaultOutput, file: 'dist/index.min.js' }],
+  output: [
+    defaultOutput,
+    { ...defaultOutput, file: 'dist/index.min.js' },
+    { file: 'dist/index.esm.js', format: 'es' },
+  ],
   plugins: [
     vue(),
     resolve(),
