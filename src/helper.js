@@ -12,12 +12,12 @@ export function observeLozad() {
   window._lozadObserver.observe()
 }
 
-export function initLozad() {
+export function initLozad(rootMargin = '200px') {
   // We initialize Lozad.js on the root
   // element of our component.
   if (!window._lozadObserver) {
     window._lozadObserver = lozad('.rokka--attr-data-src', {
-      rootMargin: '200px',
+      rootMargin,
       loaded: el => {
         window._imageCache.add(el.getAttribute('data-cache'))
       },

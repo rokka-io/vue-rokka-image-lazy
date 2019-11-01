@@ -58,6 +58,10 @@ export default {
       type: String,
       default: null,
     },
+    rootMargin: {
+      type: String,
+      default: '200px',
+    },
   },
   computed: {
     ...computedProperties,
@@ -69,7 +73,7 @@ export default {
     observeLozad()
   },
   mounted() {
-    initLozad()
+    initLozad(this.rootMargin)
   },
 }
 </script>
