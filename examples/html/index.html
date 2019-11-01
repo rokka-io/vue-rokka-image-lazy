@@ -1,25 +1,28 @@
 <html>
 <head>
-<!--    <script src="https://unpkg.com/vue"></script>-->
+<!--
+    Use this for development
+-->
+    <!-- <script src="https://unpkg.com/vue"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-
     <script src="https://unpkg.com/vue-rokka-image-lazy/dist/full.umd.min.js"></script>
     <script src="https://rokka.io/index.umd.min.js"></script>
 
     <style>
 
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            background-color: #f7f7f5;
+        }
         #app {
             display: grid;
             grid-template-columns: repeat(auto-fill, 200px);
             grid-gap: 6px;
             text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            background-color: #f7f7f5;
-
         }
         #app > div {
-            min-height: 160px;
+            min-height: 190px;
             grid-template-rows: 1fr auto;
             display: grid;
             justify-content: center;
@@ -38,18 +41,17 @@
 <body>
 <div id="app">
     <div v-for="image in images" >
-
         <rokka-img
                 :org="image.organization"
                 :hash="image.short_hash"
                 :key="image.short_hash"
                 :filename="image.name"
                 loading="https://rokka.io/gallery/assets/loader.svg"
-                :operations="[{name: 'resize', options: {width: 120, height: 120}}]" :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
+                :operations="[{name: 'resize', options: {width: 160, height: 160}}]" :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
         </rokka-img>
         <div v-if="image.user_metadata.unsplash_artist_id">
-
-            Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a> on <a :href="`https://unsplash.com/photos/${image.user_metadata.unsplash_photo_id}`">Unsplash</a> </a>
+            Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a>
+            on <a :href="`https://unsplash.com/photos/${image.user_metadata.unsplash_photo_id}`">Unsplash</a> </a>
         </div>
 
     </div>
