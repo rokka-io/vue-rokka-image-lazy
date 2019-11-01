@@ -1,10 +1,24 @@
 # vue-rokka-image-lazy
 
+[![npm](https://badgen.net/npm/v/vue-rokka-image-lazy)](https://www.npmjs.com/package/vue-rokka-image-lazy)
+[![travis](https://badgen.net/travis/rokka-io/vue-rokka-image-lazy)](https://travis-ci.org/rokka-io/vue-rokka-image-lazy)
+[![dependencies](https://badgen.net/david/dep/rokka-io/vue-rokka-image-lazy)](https://david-dm.org/rokka-io/vue-rokka-image-lazy)
+[![bundlephobia zipped](https://badgen.net/bundlephobia/min/vue-rokka-image-lazy)](https://bundlephobia.com/result?p=vue-rokka-image-lazy)
+[![bundlephobia minified](https://badgen.net/bundlephobia/minzip/vue-rokka-image-lazy)](https://bundlephobia.com/result?p=vue-rokka-image-lazy)
+
+
 Loads images lazy from rokka
 
-It's compatible to `vue-rokka-image` (currently only the `img` part)
+It's compatible to [vue-rokka-image](https://github.com/rokka-io/vue-rokka-image). 
 
 It uses the pretty small [lozad](https://apoorv.pro/lozad.js/) library.
+
+## Demo
+
+[jsFiddle](https://jsfiddle.net/chregu/nackr6bw/) / 
+[jsFiddle with rokka.js](https://jsfiddle.net/chregu/m9hcvrqt/) 
+
+
 
 ## Installation
 
