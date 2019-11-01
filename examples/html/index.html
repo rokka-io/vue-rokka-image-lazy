@@ -8,58 +8,85 @@
     <script src="https://unpkg.com/vue-rokka-image-lazy/dist/full.umd.min.js"></script>
     <script src="https://rokka.io/index.umd.min.js"></script>
 
-    <style>
+    <!-- for the gallery part -->
+    <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
 
+    <script type="text/javascript" src="https://unpkg.com/vue-gallery@2.0.1/dist/js/vue-gallery.min.js"></script>
+    <style>
         body {
             font-family: Arial, sans-serif;
             font-size: 12px;
             background-color: #f7f7f5;
         }
-        #app {
+        a:link, a:visited {
+            color: black;
+        }
+        #photos {
             display: grid;
             grid-template-columns: repeat(auto-fill, 200px);
             grid-gap: 6px;
             text-align: center;
         }
-        #app > div {
-            min-height: 190px;
+        #photos > div {
+            min-height: 230px;
             grid-template-rows: 1fr auto;
             display: grid;
             justify-content: center;
             align-items: center;
             text-align: center;
             background-color: white;
-            padding: 5px;
+            padding: 5px 0;
         }
-        #app > div > img {
+        #photos > div > div {
             margin-left: auto;
             margin-right: auto;
+            cursor: pointer;
+
+        }
+
+        #photos .credits {
+            min-height: 30px;
+            padding: 0 5px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
+
 </head>
 
 <body>
-<div id="app">
-    <div v-for="image in images" >
-        <rokka-img
-                :org="image.organization"
-                :hash="image.short_hash"
-                :key="image.short_hash"
-                :filename="image.name"
-                loading="https://rokka.io/gallery/assets/loader.svg"
-                :operations="[{name: 'resize', options: {width: 160, height: 160}}]" :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
-        </rokka-img>
-        <div v-if="image.user_metadata.unsplash_artist_id">
-            Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a>
-            on <a :href="`https://unsplash.com/photos/${image.user_metadata.unsplash_photo_id}`">Unsplash</a> </a>
-        </div>
 
+<div id="app">
+    <gallery :images="galleryImages" :options="{fullScreen: fullscreen, startSlideshow: slideshow, slideshowInterval: 3000}"  :index="galleryIndex" @close="galleryIndex = null"></gallery>
+    <h1>vue-rokka-image-lazy, rokka.js, vue-gallery demo</h1>
+    <div>
+        Click on an image for gallery view mode.<br/>
+       <input id="slideshow" type="checkbox" v-model="slideshow" value="false"><label for="slideshow">As automatic slideshow</label>  <br/>
+        <input id="fullscreen" type="checkbox" v-model="fullscreen" value="false"><label for="fullscreen">In Fullscreen</label>
+    </div>
+    <div id="photos">
+        <div v-for="(image, index) in images">
+            <div @click="galleryIndex = index">
+                <rokka-img
+                        :org="image.organization"
+                        :hash="image.short_hash"
+                        :key="image.short_hash"
+                        :filename="image.name"
+                        loading="https://rokka.io/gallery/assets/loader.svg"
+                        :operations="[{name: 'resize', options: {width: 180, height: 180}}]"
+                        :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
+                </rokka-img>
+            </div>
+            <div class="credits" v-if="image.user_metadata.unsplash_artist_id">
+                Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a><br/>
+                on <a :href="`https://unsplash.com/photos/${image.user_metadata.unsplash_photo_id}`">Unsplash</a> </a>
+            </div>
+        </div>
     </div>
 </div>
 <script>
-
   const rokkaKey = '1V5HdgIYdFnVu8qU7HfXYiHjVdRtYWFB' //read only key
-
   const rokkaOrg = 'gallery-demo'
   const rokkaClient = rokka({
     apiKey: rokkaKey,
@@ -67,10 +94,27 @@
   new Vue({
     el: '#app',
     components: {
-      RokkaImg: vueRokkaImageLazy.RokkaImgLazy
+      RokkaImg: vueRokkaImageLazy.RokkaImgLazy,
+      'gallery': VueGallery
+
     },
     data: {
+      galleryIndex: null,
+      slideshow: false,
+      fullscreen: false,
       images: []
+    },
+    computed: {
+      galleryImages() {
+        return this.images.map(image => {
+             return {
+               href:`https://${rokkaOrg}.rokka.io/dynamic/resize-width-1500-height-1000/o-af-1/${image.hash}.jpg`,
+               title: image.static_metadata.exif.title || image.filename
+             }
+          }
+        )
+      }
+
     },
     created() {
       rokkaClient.sourceimages.list(rokkaOrg, {limit: 100}).then(result => {
