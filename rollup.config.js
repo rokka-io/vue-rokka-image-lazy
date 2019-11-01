@@ -6,8 +6,8 @@ export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/index.iife.min.js',
-      format: 'iife',
+      file: 'dist/index.umd.min.js',
+      format: 'umd',
       name: 'vueRokkaImageLazy',
       exports: 'named',
       globals: {
@@ -21,11 +21,11 @@ export default {
   ],
   plugins: [
     vue(),
+    resolve(),
     terser({
       include: [/^.+\.min\.js$/],
       sourcemap: true,
     }),
-    resolve(),
   ],
   external: ['vue-rokka-image', 'lozad'],
 }
