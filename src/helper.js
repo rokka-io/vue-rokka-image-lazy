@@ -40,9 +40,13 @@ export const computedProperties = {
     return this.format || this.$parent.format
   },
   _filename() {
-    return this.filename !== generalProps.filename.default && this.filename
-      ? this.filename
-      : this.$parent.filename
+    if (this.filename !== generalProps.filename.default && this.filename) {
+      return this.filename
+    }
+    if (this.$parent.filename) {
+      return this.$parent.filename
+    }
+    return this.filename
   },
   _options() {
     return this.options || this.$parent.options

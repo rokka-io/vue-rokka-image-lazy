@@ -11,7 +11,7 @@
     "core-js": "^3.3.2",
     "rokka": "^2.0.0",
     "vue": "^2.6.10",
-    "vue-rokka-image-lazy": "0.0.16"
+    "vue-rokka-image-lazy": "0.0.17"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",

@@ -18,6 +18,8 @@
   },
   "module": "dist/index.esm.js",
   "main": "dist/index.esm.min.js",
+  "unpkg": "dist/index.iife.min.js",
+  "jsdelivr": "dist/index.iife.min.js",
   "author": "rokka.io",
   "license": "MIT",
   "devDependencies": {
@@ -30,11 +32,11 @@
     "rollup-plugin-vue": "^5.1.2",
     "vue": "^2.6.10",
     "eslint": "^5.16.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
     "lozad": "^1.14.0",
-    "vue-rokka-image": "0.0.14",
-    "vue-runtime-helpers": "^1.1.2"
+    "vue-rokka-image": "0.0.17"
   }
 }
