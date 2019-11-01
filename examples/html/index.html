@@ -1,0 +1,83 @@
+<html>
+<head>
+<!--    <script src="https://unpkg.com/vue"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script src="https://unpkg.com/vue-rokka-image-lazy/dist/full.umd.min.js"></script>
+    <script src="https://rokka.io/index.umd.min.js"></script>
+
+    <style>
+
+        #app {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 200px);
+            grid-gap: 6px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            background-color: #f7f7f5;
+
+        }
+        #app > div {
+            min-height: 160px;
+            grid-template-rows: 1fr auto;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: white;
+            padding: 5px;
+        }
+        #app > div > img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <div v-for="image in images" >
+
+        <rokka-img
+                :org="image.organization"
+                :hash="image.short_hash"
+                :key="image.short_hash"
+                :filename="image.name"
+                loading="https://rokka.io/gallery/assets/loader.svg"
+                :operations="[{name: 'resize', options: {width: 120, height: 120}}]" :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
+        </rokka-img>
+        <div v-if="image.user_metadata.unsplash_artist_id">
+
+            Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a> on <a :href="`https://unsplash.com/photos/${image.user_metadata.unsplash_photo_id}`">Unsplash</a> </a>
+        </div>
+
+    </div>
+</div>
+<script>
+
+  const rokkaKey = '1V5HdgIYdFnVu8qU7HfXYiHjVdRtYWFB' //read only key
+
+  const rokkaOrg = 'gallery-demo'
+  const rokkaClient = rokka({
+    apiKey: rokkaKey,
+  })
+  new Vue({
+    el: '#app',
+    components: {
+      RokkaImg: vueRokkaImageLazy.RokkaImgLazy
+    },
+    data: {
+      images: []
+    },
+    created() {
+      rokkaClient.sourceimages.list(rokkaOrg, {limit: 100}).then(result => {
+        this.images = result.body.items
+      })
+    }
+  })
+
+</script>
+</body>
+
+</html>
