@@ -125,6 +125,15 @@
 
     },
     created() {
+      // if you don't want to publish your API key or actual search query to the backend
+      // or want to filter out response data (like some image data fields). You could do a "middleware"
+      // filter somewhere. Eg. with AWS API Gateway and Lambda. Blogpost will come
+      /*
+      fetch('https://9iv7ht2xcd.execute-api.eu-central-1.amazonaws.com/test/gallerydemo').then(resp => {
+        resp.json().then(body => {
+          this.images = body.items
+        })
+      })*/
       rokkaClient.sourceimages.list(rokkaOrg, {limit: 100}).then(result => {
         this.images = result.body.items
       })
