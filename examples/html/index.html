@@ -1,8 +1,8 @@
 <html>
 <head>
-<!--
-    Use this for development
--->
+    <!--
+        Use this for development
+    -->
     <!-- <script src="https://unpkg.com/vue"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/vue-rokka-image-lazy@0.0.25"></script>
@@ -11,7 +11,8 @@
     <!-- for the gallery part -->
     <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
     <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
+    <script type="text/javascript"
+            src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
 
     <script type="text/javascript" src="https://unpkg.com/vue-gallery@2.0.1/dist/js/vue-gallery.min.js"></script>
     <style>
@@ -58,12 +59,16 @@
 <body>
 
 <div id="app">
-    <gallery :images="galleryImages" :options="{fullScreen: fullscreen, startSlideshow: slideshow, slideshowInterval: 3000}"  :index="galleryIndex" @close="galleryIndex = null"></gallery>
+    <gallery :images="galleryImages"
+             :options="{fullScreen: fullscreen, startSlideshow: slideshow, slideshowInterval: 3000}"
+             :index="galleryIndex" @close="galleryIndex = null"></gallery>
     <h1>vue-rokka-image-lazy, rokka.js, vue-gallery demo</h1>
     <div>
         Click on an image for gallery view mode.<br/>
-       <input id="slideshow" type="checkbox" v-model="slideshow" value="false"><label for="slideshow">As automatic slideshow</label>  <br/>
-        <input id="fullscreen" type="checkbox" v-model="fullscreen" value="false"><label for="fullscreen">In Fullscreen</label>
+        <input id="slideshow" type="checkbox" v-model="slideshow" value="false"><label for="slideshow">As automatic
+        slideshow</label> <br/>
+        <input id="fullscreen" type="checkbox" v-model="fullscreen" value="false"><label for="fullscreen">In
+        Fullscreen</label>
     </div>
     <div id="photos">
         <div v-for="(image, index) in images">
@@ -73,7 +78,7 @@
                     loading="https://rokka.io/gallery/assets/loader.svg"
                     :operations="[{name: 'resize', options: {width: 180, height: 180}}]"
                     :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
-            </rokka-img>
+                </rokka-img>
             </div>
             <div class="credits" v-if="image.user_metadata.unsplash_artist_id">
                 Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a><br/>
@@ -104,16 +109,16 @@
     computed: {
       galleryImages() {
         return this.images.map(image => {
-          let url =    vueRokkaImageLazy.rokkaUrl(
-            {
-              sourceimage: image,
-              operations: [{name: 'resize', options: {width: 1500, height: 1000}}],
-              options:   {autoformat: 1}
-            })
-             return {
-               href: url,
-               title: image.static_metadata.exif.title || image.filename
-             }
+            const url = vueRokkaImageLazy.rokkaUrl(
+              {
+                sourceimage: image,
+                operations: [{name: 'resize', options: {width: 1500, height: 1000}}],
+                options: {autoformat: 1}
+              })
+            return {
+              href: url,
+              title: image.static_metadata.exif.title || image.filename
+            }
           }
         )
       }
