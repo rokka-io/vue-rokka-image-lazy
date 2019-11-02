@@ -1,7 +1,8 @@
 import RokkaImgLazy from './Img.vue'
 import RokkaSourceLazy from './Source.vue'
+import { rokkaUrl } from 'vue-rokka-image'
 
-export { RokkaImgLazy, RokkaSourceLazy }
+export { RokkaImgLazy, RokkaSourceLazy, rokkaUrl }
 
 export default {
   install(Vue) {
