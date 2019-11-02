@@ -36,6 +36,9 @@ export const computedProperties = {
   _stack() {
     return this.stack || this.$parent.stack
   },
+  _sourceimage() {
+    return this.sourceimage || this.$parent.sourceimage
+  },
   _format() {
     return this.format || this.$parent.format
   },

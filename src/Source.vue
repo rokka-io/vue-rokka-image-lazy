@@ -12,6 +12,7 @@
     :variables="_variables"
     :data-cache="rokkaRenderUrl"
     :media="media"
+    :sourceimage="_sourceimage"
     class="rokka--attr-data-src"
   />
 </template>

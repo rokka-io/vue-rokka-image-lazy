@@ -5,7 +5,7 @@
 -->
     <!-- <script src="https://unpkg.com/vue"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://unpkg.com/vue-rokka-image-lazy/dist/full.umd.min.js"></script>
+    <script src="https://unpkg.com/vue-rokka-image-lazy"></script>
     <script src="https://rokka.io/index.umd.min.js"></script>
 
     <!-- for the gallery part -->
@@ -69,14 +69,11 @@
         <div v-for="(image, index) in images">
             <div @click="galleryIndex = index">
                 <rokka-img
-                        :org="image.organization"
-                        :hash="image.short_hash"
-                        :key="image.short_hash"
-                        :filename="image.name"
-                        loading="https://rokka.io/gallery/assets/loader.svg"
-                        :operations="[{name: 'resize', options: {width: 180, height: 180}}]"
-                        :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
-                </rokka-img>
+                    :sourceimage="image"
+                    loading="https://rokka.io/gallery/assets/loader.svg"
+                    :operations="[{name: 'resize', options: {width: 180, height: 180}}]"
+                    :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
+            </rokka-img>
             </div>
             <div class="credits" v-if="image.user_metadata.unsplash_artist_id">
                 Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a><br/>
@@ -107,8 +104,14 @@
     computed: {
       galleryImages() {
         return this.images.map(image => {
+          let url =    vueRokkaImageLazy.rokkaUrl(
+            {
+              sourceimage: image,
+              operations: [{name: 'resize', options: {width: 1500, height: 1000}}],
+              options:   {autoformat: 1}
+            })
              return {
-               href:`https://${rokkaOrg}.rokka.io/dynamic/resize-width-1500-height-1000/o-af-1/${image.hash}.jpg`,
+               href: url,
                title: image.static_metadata.exif.title || image.filename
              }
           }

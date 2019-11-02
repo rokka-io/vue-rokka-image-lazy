@@ -3,6 +3,7 @@
     :org="_org"
     :hash="_hash"
     :filename="_filename"
+    :sourceimage="_sourceimage"
     :stack="_stack"
     :format="_format"
     :alt="alt"

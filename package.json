@@ -25,19 +25,19 @@
   "jsdelivr": "dist/index.umd.min.js",
   "dependencies": {
     "lozad": "^1.14.0",
-    "vue-rokka-image": "0.0.18"
+    "vue-rokka-image": "0.0.20"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.2.3",
-    "rollup": "^1.26.2",
+    "rollup": "^1.26.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-vue": "^5.1.2",
     "vue": "^2.6.10",
-    "eslint": "^5.16.0",
-    "vue-template-compiler": "^2.6.10",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "vue-template-compiler": "^2.6.10"
   }
 }

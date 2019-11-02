@@ -46,10 +46,7 @@
       <div v-for="image in images" :key="image.short_hash">
         <rokka-img-lazy
           v-if="element === 'img' && lazy === 'true'"
-          :hash="image.short_hash"
-          :org="image.organization"
-          stack="dynamic"
-          :filename="image.name"
+          :sourceimage="image"
           :options="[{ autoformat: 1 }, { autoformat: 1, dpr: 2 }]"
           loading="loader.svg"
           :operations="[
@@ -61,9 +58,7 @@
         ></rokka-img-lazy>
         <rokka-picture
           v-if="element === 'picture' && lazy === 'true'"
-          :hash="image.short_hash"
-          :org="image.organization"
-          :filename="image.name"
+          :sourceimage="image"
           stack="dynamic"
           :postfix="['1x', '2x']"
           :options="[{ autoformat: 1 }, { autoformat: 1, dpr: 2 }]"
@@ -91,10 +86,7 @@
         <!-- img not lazy loaded. postfix and options make it at srcset for retina screens. -->
         <rokka-img
           v-if="element === 'img' && lazy === 'false'"
-          :hash="image.short_hash"
-          :org="image.organization"
-          :filename="image.name"
-          stack="dynamic"
+          :sourceimage="image"
           :postfix="['1x', '2x']"
           :options="[{ autoformat: 1 }, { dpr: 2, autoformat: 1 }]"
           :operations="[
@@ -110,12 +102,9 @@
         ></rokka-img>
         <rokka-picture
           v-if="element === 'picture' && lazy === 'false'"
-          :hash="image.short_hash"
-          :org="image.organization"
-          :filename="image.name"
+          :sourceimage="image"
           :postfix="['1x', '2x']"
           :options="[{ autoformat: 1 }, { autoformat: 1, dpr: 2 }]"
-          stack="dynamic"
           :operations="[
             {
               name: 'resize',
