@@ -3,23 +3,23 @@ import { generalProps } from 'vue-rokka-image'
 import lozad from 'lozad'
 
 export function createCache() {
-  if (!window._imageCache) {
-    window._imageCache = new ImageCache({ max: 200 })
+  if (!window._vueRokkaImageCache) {
+    window._vueRokkaImageCache = new ImageCache({ max: 200 })
   }
 }
 
 export function observeLozad() {
-  window._lozadObserver.observe()
+  window._vueRokkaLozadObserver.observe()
 }
 
 export function initLozad(rootMargin = '200px') {
   // We initialize Lozad.js on the root
   // element of our component.
-  if (!window._lozadObserver) {
-    window._lozadObserver = lozad('.rokka--attr-data-src', {
+  if (!window._vueRokkaLozadObserver) {
+    window._vueRokkaLozadObserver = lozad('.rokka--attr-data-src', {
       rootMargin,
       loaded: el => {
-        window._imageCache.add(el.getAttribute('data-cache'))
+        window._vueRokkaImageCache.add(el.getAttribute('data-cache'))
       },
     })
   }
@@ -78,7 +78,7 @@ export const computedProperties = {
   },
 
   isCached() {
-    return window._imageCache.has(this.rokkaRenderUrl)
+    return window._vueRokkaImageCache.has(this.rokkaRenderUrl)
   },
 
   rokkaRenderUrl() {
