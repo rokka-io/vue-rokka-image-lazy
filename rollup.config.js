@@ -3,7 +3,7 @@ import { terser } from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 
 const commonUMDconfig = {
-  file: 'dist/index.umd.min.js',
+  file: 'dist/single.umd.min.js',
   format: 'umd',
   name: 'vueRokkaImageLazy',
   exports: 'named',
@@ -24,7 +24,7 @@ const plugins = [
 export default [
   {
     input: 'src/index.js',
-    output: { ...commonUMDconfig, file: 'dist/full.umd.min.js', globals: {} },
+    output: { ...commonUMDconfig, file: 'dist/index.umd.min.js', globals: {} },
     plugins: plugins,
   },
   {
