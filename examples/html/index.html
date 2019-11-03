@@ -80,9 +80,9 @@
                     :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]" :postfix="['1x', '2x']">
                 </rokka-img>
             </div>
-            <div class="credits" v-if="image.user_metadata.unsplash_artist_id">
+            <div class="credits" v-if="image.user_metadata && image.user_metadata.unsplash_artist_id">
                 Photo by <a :href="`https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`">{{image.static_metadata.exif.artist}}</a><br/>
-                on <a :href="`https://unsplash.com/photos/${image.user_metadata.unsplash_photo_id}`">Unsplash</a> </a>
+                on <a :href="`https://unsplash.com/photos/${image.user_metadata.unsplash_photo_id}`">Unsplash</a>
             </div>
         </div>
     </div>
@@ -117,12 +117,11 @@
               })
             return {
               href: url,
-              title: image.static_metadata.exif.title || image.filename
+              title: (image.static_metadata && image.static_metadata.exif && image.static_metadata.exif.title) || image.filename
             }
           }
         )
       }
-
     },
     created() {
       // if you don't want to publish your API key or actual search query to the backend

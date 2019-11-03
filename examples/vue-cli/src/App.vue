@@ -1,6 +1,17 @@
 <template>
   <div id="app">
     <div>
+      <gallery
+        :images="galleryImages"
+        :options="{
+          fullScreen: fullscreen,
+          startSlideshow: slideshow,
+          slideshowInterval: 3000,
+        }"
+        :index="galleryIndex"
+        @close="galleryIndex = null"
+      ></gallery>
+
       <h1>rokka-vue-image-lazy example</h1>
       <div id="form">
         <div>
@@ -43,7 +54,11 @@
       </div>
     </div>
     <div id="images">
-      <div v-for="image in images" :key="image.short_hash">
+      <div
+        v-for="(image, index) in images"
+        :key="image.short_hash"
+        @click="galleryIndex = index"
+      >
         <rokka-img-lazy
           v-if="element === 'img' && lazy === 'true'"
           :sourceimage="image"
@@ -125,6 +140,27 @@
           <rokka-source media="all"></rokka-source>
           <rokka-img></rokka-img>
         </rokka-picture>
+        <div
+          class="credits"
+          v-if="image.user_metadata && image.user_metadata.unsplash_artist_id"
+        >
+          Photo by
+          <a
+            :href="
+              `https://unsplash.com/@${image.user_metadata.unsplash_artist_id}`
+            "
+            >{{ image.static_metadata.exif.artist }}</a
+          ><br />
+          on
+          <a
+            :href="
+              `https://unsplash.com/photos/${
+                image.user_metadata.unsplash_photo_id
+              }`
+            "
+            >Unsplash</a
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -133,9 +169,9 @@
 <script>
 import rokka from 'rokka'
 import { RokkaImgLazy, RokkaSourceLazy } from 'vue-rokka-image-lazy'
-import { RokkaPicture, RokkaSource, RokkaImg } from 'vue-rokka-image'
-
-const rokkaKey = '1V5HdgIYdFnVu8qU7HfXYiHjVdRtYWFB' //read only key
+import { RokkaPicture, RokkaSource, RokkaImg, rokkaUrl } from 'vue-rokka-image'
+import VueGallery from 'vue-gallery'
+const rokkaKey = 'qjbm2piHyONJelrpSeWuIhRROS6Gls00' //read only key
 
 const rokkaOrg = 'gallery-demo'
 const rokkaClient = rokka({
@@ -149,6 +185,7 @@ export default {
     RokkaPicture,
     RokkaSource,
     RokkaImg,
+    gallery: VueGallery,
   },
   data() {
     const uri = window.location.hash.substring(1)
@@ -157,6 +194,9 @@ export default {
       images: [],
       element: params.get('element') || 'img',
       lazy: params.get('lazy') || 'true',
+      galleryIndex: null,
+      slideshow: false,
+      fullscreen: false,
     }
   },
   methods: {
@@ -178,6 +218,27 @@ export default {
       )
     },
   },
+  computed: {
+    galleryImages() {
+      return this.images.map(image => {
+        const url = rokkaUrl({
+          sourceimage: image,
+          operations: [
+            { name: 'resize', options: { width: 1500, height: 1000 } },
+          ],
+          options: { autoformat: 1 },
+        })
+        return {
+          href: url,
+          title:
+            (image.static_metadata &&
+              image.static_metadata.exif &&
+              image.static_metadata.exif.title) ||
+            image.filename,
+        }
+      })
+    },
+  },
   created() {
     rokkaClient.sourceimages.list(rokkaOrg, { limit: 100 }).then(result => {
       this.images = result.body.items
@@ -187,12 +248,20 @@ export default {
 </script>
 
 <style>
+body {
+  background-color: #f7f7f5;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0 20px;
   color: #2c3e50;
+}
+
+a:link,
+a:visited {
+  color: black;
 }
 
 #form {
@@ -204,13 +273,25 @@ export default {
 #images {
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
+  grid-template-columns: repeat(auto-fill, 220px);
   grid-gap: 6px;
   min-height: 200px;
   margin-top: 30px;
 }
 
-#images div {
-  height: 200px;
+#images > div {
+  height: 250px;
+  grid-template-rows: 1fr auto;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  padding: 5px 0;
+}
+#images > div > img {
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
 }
 </style>
