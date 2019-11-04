@@ -1,0 +1,59 @@
+<html>
+<head>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-rokka-image-lazy@0.0.25"></script>
+    <script src="https://rokka.io/index.umd.min.js"></script>
+    <style type="text/css">
+        #photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 200px);
+            grid-gap: 6px;
+            text-align: center;
+        }
+        #photos div {
+            /* needed for lazy loading to properly kick in */
+            min-height: 180px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div id="photos">
+        <div v-for="image in images">
+            <div>
+                <rokka-img-lazy
+                     :sourceimage="image"
+                     loading="https://rokka.io/gallery/assets/loader.svg"
+                     :operations="[{name: 'resize', options: {width: 180, height: 180}}]"
+                     :options="[{autoformat: 1}, {autoformat: 1, dpr: 2}]"
+                     :postfix="['1x', '2x']">
+                </rokka-img-lazy>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  const rokkaKey = '1V5HdgIYdFnVu8qU7HfXYiHjVdRtYWFB' //read only key
+  const rokkaOrg = 'gallery-demo'
+  const rokkaClient = rokka({
+    apiKey: rokkaKey,
+  })
+  new Vue({
+    el: '#app',
+    components: {
+      RokkaImgLazy: vueRokkaImageLazy.RokkaImgLazy,
+
+    },
+    data: {
+      images: []
+    },
+    created() {
+      rokkaClient.sourceimages.list(rokkaOrg, {limit: 100}).then(result => {
+        this.images = result.body.items
+      })
+    }
+  })
+</script>
+</body>
+
+</html>
