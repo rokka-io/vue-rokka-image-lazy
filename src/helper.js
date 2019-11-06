@@ -42,6 +42,16 @@ export const computedProperties = {
   _format() {
     return this.format || this.$parent.format
   },
+  _alt() {
+    return this.alt || this.$parent.alt
+  },
+  _title() {
+    return this.title || this.$parent.title
+  },
+  _postfix() {
+    return this.postfix || this.$parent.postfix
+  },
+
   _filename() {
     if (this.filename !== generalProps.filename.default && this.filename) {
       return this.filename
@@ -61,6 +71,20 @@ export const computedProperties = {
         ? this.$parent.options[0]
         : this.$parent.options)
     )
+  },
+  _operationsFirst() {
+    const thOperations =
+      Array.isArray(this.operations) && Array.isArray(this.operations[0])
+        ? this.operations[0]
+        : this.operations
+    if (thOperations) {
+      return thOperations
+    }
+    const parent = this.$parent
+    return Array.isArray(parent.operations) &&
+      Array.isArray(parent.operations[0])
+      ? parent.operations[0]
+      : parent.operations
   },
   _variablesFirst() {
     return (
@@ -91,6 +115,7 @@ export const computedProperties = {
       stack: this._stack,
       format: this._format,
       filename: this._filename,
+      operations: this._operationsFirst,
       options: this._optionsFirst,
       variables: this._variablesFirst,
     })

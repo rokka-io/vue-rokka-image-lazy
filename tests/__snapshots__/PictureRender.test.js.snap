@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RokkaPicture rendering renders correctly 1`] = `
+<div
+  class="rokka-picture"
+>
+  <picture>
+    <source
+      class="rokka--attr-data-srcset"
+      data-cache="https://testorg.rokka.io/dynamic/resize-width-100-height-1000--grayscale/1234/image.jpg"
+      data-srcset="https://testorg.rokka.io/dynamic/resize-width-100-height-1000--grayscale/o-af-1/1234/image.jpg 1x, https://testorg.rokka.io/dynamic/resize-width-100-height-1000--grayscale/o-af-1-dpr-2/1234/image.jpg 2x"
+      media="(max-width: 1000px)"
+    />
+     
+    <source
+      class="rokka--attr-data-srcset"
+      data-cache="https://testorg.rokka.io/dynamic/1234/image.jpg"
+      data-srcset="https://testorg.rokka.io/dynamic/resize-width-100-height-1000/o-af-1/1234/image.jpg 1x, https://testorg.rokka.io/dynamic/resize-width-100-height-1000/o-af-1-dpr-2/1234/image.jpg 2x"
+      media="all"
+    />
+     
+    <img
+      alt="foo"
+      class="rokka--attr-data-src"
+      data-cache="https://testorg.rokka.io/dynamic/1234/image.jpg"
+      data-src="https://testorg.rokka.io/dynamic/resize-width-100-height-1000/o-af-1/1234/image.jpg"
+      data-srcset="https://testorg.rokka.io/dynamic/resize-width-100-height-1000/o-af-1/1234/image.jpg 1x, https://testorg.rokka.io/dynamic/resize-width-100-height-1000/o-af-1-dpr-2/1234/image.jpg 2x"
+      src="/loader.svg"
+      title="image title"
+    />
+  </picture>
+</div>
+`;
