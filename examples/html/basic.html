@@ -5,13 +5,13 @@
     <script src="https://unpkg.com/rokka@2.0.1/dist/index.umd.min.js"></script>
 
     <style type="text/css">
-        #photos {
+        .photos {
             display: grid;
             grid-template-columns: repeat(auto-fill, 200px);
             grid-gap: 6px;
             text-align: center;
         }
-        #photos div {
+        .photos div {
             /* needed for lazy loading to properly kick in */
             min-height: 180px;
         }
@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="app">
-    <div id="photos">
+    <div class="photos">
         <div v-for="image in images">
             <div>
                 <rokka-img-lazy

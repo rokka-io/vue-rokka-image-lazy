@@ -24,13 +24,13 @@
         a:link, a:visited {
             color: black;
         }
-        #photos {
+        .photos {
             display: grid;
             grid-template-columns: repeat(auto-fill, 200px);
             grid-gap: 6px;
             text-align: center;
         }
-        #photos > div {
+        .photos > div {
             min-height: 230px;
             grid-template-rows: 1fr auto;
             display: grid;
@@ -40,14 +40,14 @@
             background-color: white;
             padding: 5px 0;
         }
-        #photos > div > div {
+        .photos > div > div {
             margin-left: auto;
             margin-right: auto;
             cursor: pointer;
 
         }
 
-        #photos .credits {
+        .photos .credits {
             min-height: 30px;
             padding: 0 5px;
         }
@@ -70,7 +70,7 @@
         <input id="fullscreen" type="checkbox" v-model="fullscreen" value="false"><label for="fullscreen">In
         Fullscreen</label>
     </div>
-    <div id="photos">
+    <div class="photos">
         <div v-for="(image, index) in images">
             <div @click="galleryIndex = index">
                 <rokka-img
