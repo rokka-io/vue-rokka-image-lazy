@@ -4,8 +4,7 @@
 [![travis](https://badgen.net/travis/rokka-io/vue-rokka-image-lazy)](https://travis-ci.org/rokka-io/vue-rokka-image-lazy)
 [![dependencies](https://badgen.net/david/dep/rokka-io/vue-rokka-image-lazy)](https://david-dm.org/rokka-io/vue-rokka-image-lazy)
 [![bundlephobia zipped](https://badgen.net/bundlephobia/min/vue-rokka-image-lazy)](https://bundlephobia.com/result?p=vue-rokka-image-lazy)
-[![bundlephobia minified](https://badgen.net/bundlephobia/minzip/vue-rokka-image-lazy)](https://bundlephobia.com/result?p=vue-rokka-image-lazy)
-
+[![coveralls](https://badgen.net/coveralls/c/github/rokka-io/vue-rokka-image-lazy)](https://coveralls.io/github/rokka-io/vue-rokka-image-lazy)
 
 Loads images lazy from rokka
 
