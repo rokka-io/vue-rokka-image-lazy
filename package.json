@@ -28,7 +28,7 @@
   "jsdelivr": "dist/index.umd.min.js",
   "dependencies": {
     "lozad": "^1.14.0",
-    "vue-rokka-image": "0.0.20"
+    "vue-rokka-image": "0.5.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.7",

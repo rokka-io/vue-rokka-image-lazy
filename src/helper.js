@@ -27,8 +27,8 @@ export function initLozad(rootMargin = '200px') {
 }
 
 export const computedProperties = {
-  _org() {
-    return this.org || this.$parent.org
+  _organization() {
+    return this.organization || this.$parent.organization
   },
   _hash() {
     return this.hash || this.$parent.hash
@@ -49,7 +49,11 @@ export const computedProperties = {
     return this.title || this.$parent.title
   },
   _postfix() {
-    return this.postfix || this.$parent.postfix
+    const postfix = this.postfix || this.$parent.postfix
+    if (!postfix) {
+      return ['1x', '2x']
+    }
+    return postfix
   },
 
   _filename() {
@@ -62,7 +66,11 @@ export const computedProperties = {
     return this.filename
   },
   _options() {
-    return this.options || this.$parent.options
+    const options = this.options || this.$parent.options
+    if (!options) {
+      return [{}, { dpr: 2 }]
+    }
+    return options
   },
   _optionsFirst() {
     return (
@@ -110,7 +118,7 @@ export const computedProperties = {
 
   rokkaRenderUrl() {
     return buildRokkaUrl({
-      org: this._org,
+      organization: this._organization,
       hash: this._hash,
       stack: this._stack,
       format: this._format,

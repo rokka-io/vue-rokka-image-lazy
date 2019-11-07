@@ -1,12 +1,12 @@
 <template>
   <rokka-source
-    :org="_org"
+    :organization="_organization"
     :hash="_hash"
     :filename="_filename"
     :stack="_stack"
     :format="_format"
     srcset-attribute="data-srcset"
-    :postfix="postfix"
+    :postfix="_postfix"
     :options="_options"
     :operations="operations"
     :variables="_variables"
@@ -39,18 +39,6 @@ export default {
     srcsetAttribute: {
       type: String,
       default: 'data-srcset',
-    },
-    postfix: {
-      type: [Object, Array],
-      default: () => ['1x', '2x'],
-    },
-    options: {
-      type: [Object, Array],
-      default: () => [{}, { dpr: '2' }],
-    },
-    operations: {
-      type: [Object, Array],
-      default: () => [],
     },
     loading: {
       type: String,

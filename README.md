@@ -37,7 +37,7 @@ It additionally suppports a `loading` property, which should point to a loading 
     <rokka-img-lazy-load
       alt="alt Text"
       :title="Title"
-      :org="rokkaOrg"
+      :organization="rokkaOrg"
       :stack="'resizecrop'"
       :hash="HASH"
       :format="jpg"

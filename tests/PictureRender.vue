@@ -1,10 +1,9 @@
 <template>
   <rokka-picture
     hash="1234"
-    org="testorg"
+    organization="testorg"
     alt="testimage"
     title="image title"
-    :postfix="['1x']"
     :operations="[resize]"
     :options="[{ af: 1 }, { af: 1, dpr: 2 }]"
   >
