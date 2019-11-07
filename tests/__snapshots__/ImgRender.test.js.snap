@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RokkaImg rendering renders correctly 1`] = `
+<img
+  class="rokka--attr-data-src"
+  data-cache="https://gallery-demo.rokka.io/dynamic/resize-width-300/o-autoformat-1/7ac62a/image.jpg"
+  data-src="https://gallery-demo.rokka.io/dynamic/resize-width-300/o-autoformat-1/7ac62a/image.jpg"
+  data-srcset="https://gallery-demo.rokka.io/dynamic/resize-width-300/o-autoformat-1/7ac62a/image.jpg 1x, https://gallery-demo.rokka.io/dynamic/resize-width-300/o-autoformat-1-dpr-2/7ac62a/image.jpg 2x"
+  src="https://rokka.io/gallery/assets/loader.svg"
+/>
+`;

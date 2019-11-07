@@ -1,6 +1,6 @@
 <template>
   <rokka-img
-    :org="_org"
+    :organization="_organization"
     :hash="_hash"
     :filename="_filename"
     :sourceimage="_sourceimage"
